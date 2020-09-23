@@ -1,0 +1,18 @@
+name: 'Remove old Workflow runs'
+description: 'Remove old workflow runs'
+branding:
+  icon: 'activity'
+  color: 'gray-dark'
+inputs:
+  github-token:
+    description: 'token for github'
+    required: true
+  workflow-file-name:
+    description: 'The name of the workflow file'
+    required: true
+  older-than-days: 'Workflows older than x days'
+    description: 7
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
