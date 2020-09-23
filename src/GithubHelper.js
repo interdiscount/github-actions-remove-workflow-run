@@ -5,12 +5,10 @@ const OctoClient_1 = require("./OctoClient");
 const utils_1 = require("./utils");
 class GitHubHelper {
     constructor() {
-        this.getCurrentWorkflowRuns = (branch, workflowFileName) => this.octokit.actions.listWorkflowRuns(Object.assign(Object.assign({}, utils_1.getRepositoryInformation()), { branch, 
+        this.getCurrentWorkflowRuns = (workflowFileName) => this.octokit.actions.listWorkflowRuns(Object.assign(Object.assign({}, utils_1.getRepositoryInformation()), { 
             // @ts-ignore
-            workflow_id: workflowFileName, 
-            // @ts-ignore
-            status: "in_progress" }));
-        this.cancelWorkflowRunById = (runId) => this.octokit.actions.cancelWorkflowRun(Object.assign(Object.assign({}, utils_1.getRepositoryInformation()), { run_id: runId }));
+            workflow_id: workflowFileName }));
+        this.deleteWorkflowRunById = (runId) => this.octokit.actions.deleteWorkflowRun(Object.assign(Object.assign({}, utils_1.getRepositoryInformation()), { run_id: runId }));
         this.octokit = new OctoClient_1.Octokit({ auth: utils_1.getGithubToken() });
     }
 }

@@ -10,8 +10,8 @@ inputs:
   workflow-file-name:
     description: 'The name of the workflow file'
     required: true
-  older-than-days: 'Workflows older than x days'
-    description: 7
+  older-than-days:
+    description: 'Workflows older than x days'
     required: true
 runs:
   using: 'node12'

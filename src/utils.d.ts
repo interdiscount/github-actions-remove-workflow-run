@@ -4,4 +4,5 @@ declare type RepositoryInformation = {
 };
 export declare const getRepositoryInformation: () => RepositoryInformation;
 export declare const getGithubToken: () => string;
+export declare const filterWorkflowRunsByDate: (workflowRuns: WorkflowRun[], date: Date) => WorkflowRun[];
 export {};

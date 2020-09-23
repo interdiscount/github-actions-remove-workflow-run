@@ -1,10 +1,10 @@
 import { Endpoints } from '@octokit/types';
-declare type runningWorkflows = Endpoints['GET /repos/:owner/:repo/actions/workflows/:workflow_id/runs']['response'];
-declare type cancelWorkflowRun = Endpoints['POST /repos/:owner/:repo/actions/runs/:run_id/cancel']['response'];
+declare type completedWorkflows = Endpoints['GET /repos/:owner/:repo/actions/workflows/:workflow_id/runs']['response'];
+declare type deleteWorkflowRun = Endpoints['DELETE /repos/:owner/:repo/actions/runs/:run_id']['response'];
 export declare class GitHubHelper {
     private octokit;
     constructor();
-    getCurrentWorkflowRuns: (branch: string, workflowFileName: string) => Promise<runningWorkflows>;
-    cancelWorkflowRunById: (runId: number) => Promise<cancelWorkflowRun>;
+    getCurrentWorkflowRuns: (workflowFileName: string) => Promise<completedWorkflows>;
+    deleteWorkflowRunById: (runId: number) => Promise<deleteWorkflowRun>;
 }
 export {};

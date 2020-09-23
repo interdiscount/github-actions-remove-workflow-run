@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getGithubToken = exports.getRepositoryInformation = void 0;
+exports.filterWorkflowRunsByDate = exports.getGithubToken = exports.getRepositoryInformation = void 0;
 const tslib_1 = require("tslib");
 const core = tslib_1.__importStar(require("@actions/core"));
+const dayjs_1 = tslib_1.__importDefault(require("dayjs"));
 exports.getRepositoryInformation = () => {
     var _a;
     const repositoryInformation = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/');
@@ -12,4 +13,5 @@ exports.getRepositoryInformation = () => {
     };
 };
 exports.getGithubToken = () => core.getInput('github-token');
+exports.filterWorkflowRunsByDate = (workflowRuns, date) => workflowRuns.filter(workflowRun => dayjs_1.default(date).isAfter(workflowRun.updated_at));
 //# sourceMappingURL=utils.js.map

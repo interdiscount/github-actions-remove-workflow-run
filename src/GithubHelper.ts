@@ -14,10 +14,10 @@ export class GitHubHelper {
 
   getCurrentWorkflowRuns = (workflowFileName: string): Promise<completedWorkflows> =>
       this.octokit.actions.listWorkflowRuns({
-        ...getRepositoryInformation(),
-        // @ts-ignore
-        workflow_id: workflowFileName,
-        status: "completed"
+          ...getRepositoryInformation(),
+          // @ts-ignore
+          workflow_id: workflowFileName,
+          per_page: 100,
       });
 
   deleteWorkflowRunById = (runId: number): Promise<deleteWorkflowRun> =>
