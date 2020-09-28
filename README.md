@@ -1,5 +1,5 @@
-# Cancel duplicate Workflow run
-Cancel duplicate Workflow runs, this will make your github actions more efficient.
+# Delete old Workflow runs
+Delete old Workflow runs, to keep your Actions Tab clean.
 
 ## Inputs
 
@@ -9,18 +9,18 @@ Cancel duplicate Workflow runs, this will make your github actions more efficien
 
 ### `workflow-file-name`
 
-**Required** Name of the Workflow you would like to cancel.
+**Required** Name of the Workflow.
 
-### `branch`
+### `older-than-days`
 
-**Required** Branch the workflow runs on.
+**Required** Remove workflows older than X days.
 
 ## Example usage
 
 ```
-uses: interdiscount/github-actions-cancel-duplicate-workflow-run@1.0.0
+uses: interdiscount/github-actions-remove-workflow-run@1.0.0
 with:
   github-token: ${{ secrets.GITHUB_TOKEN }}
-  workflow-file-name: "workflow.yml"
-  branch: ${GITHUB_REF##*/}
+  workflow-file-name: 'cleanup-workflow-runs.yml'
+  older-than-days: 7
 ```
